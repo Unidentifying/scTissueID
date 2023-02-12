@@ -413,6 +413,7 @@ def predict(
     dec_values : array
         Predicted values.
     """
+    
     cdef cnp.float64_t[::1] dec_values
     cdef svm_parameter param
     cdef svm_model *model

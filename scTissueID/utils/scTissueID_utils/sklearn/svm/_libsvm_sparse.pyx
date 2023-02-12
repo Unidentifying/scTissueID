@@ -296,6 +296,7 @@ def libsvm_sparse_predict (const cnp.float64_t[::1] T_data,
     dec_values : array
         predicted values.
     """
+    
     cdef cnp.float64_t[::1] dec_values
     cdef svm_parameter *param
     cdef svm_csr_model *model

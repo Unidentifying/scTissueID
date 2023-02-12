@@ -470,6 +470,7 @@ class BaseLibSVM(BaseEstimator, metaclass=ABCMeta):
 
     def _sparse_predict(self, X):
         # Precondition: X is a csr_matrix of dtype np.float64.
+        
         kernel = self.kernel
         if callable(kernel):
             kernel = "precomputed"
@@ -804,6 +805,7 @@ class BaseSVC(ClassifierMixin, BaseLibSVM, metaclass=ABCMeta):
         y_pred : ndarray of shape (n_samples,)
             Class labels for samples in X.
         """
+        
         check_is_fitted(self)
         if self.break_ties and self.decision_function_shape == "ovo":
             raise ValueError(
