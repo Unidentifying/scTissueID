@@ -34,7 +34,6 @@ trainlabels	= pd.read_csv(Trainlabel, header=0, index_col=None, sep=',')
 test		= pd.read_csv(Testdata, index_col=0,sep=',')
 testlabels	= pd.read_csv(Testlabel, header=0, index_col=None, sep=',')
 
-train		= np.log1p(train)
 test		= np.log1p(test)
  
 scTissueID_QC	= CalibratedClassifierCV(LinearSVC())
@@ -48,7 +47,6 @@ prob		= []
 y_train	= trainlabels
 y_test		= testlabels
         
-y_train	= y_train.values.ravel()
 y_test		= y_test.values.ravel()
 
 tstart		= tm.time()
