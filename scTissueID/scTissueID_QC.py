@@ -33,8 +33,6 @@ trainlabels	= pd.read_csv(Trainlabel, header=0, index_col=None, sep=',')
     
 test		= pd.read_csv(Testdata, index_col=0,sep=',')
 testlabels	= pd.read_csv(Testlabel, header=0, index_col=None, sep=',')
-
-test		= np.log1p(test)
  
 scTissueID_QC	= CalibratedClassifierCV(LinearSVC())
 
